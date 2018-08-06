@@ -13,11 +13,13 @@ class Map extends Component {
    return(
       <div>
         <GoogleMapExample
+          loadingElement={<div style={{height: '100%'}}/>}
           containerElement={ <div style={{ height: `1000px`, width: '100%' }} /> }
           mapElement={ <div style={{ height: `100%` }} /> }
         />
       </div>
-   );
-   }
+  );
+ }
 };
+
 export default Map;
