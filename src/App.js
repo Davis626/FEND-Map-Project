@@ -7,7 +7,13 @@ import Map from './components/Map.js'
 class App extends Component {
   state = {
     locations: [],
-    showLocations: [],
+    allLocations: [],
+    isMarkerShown: true,
+    isDetailsShown: false,
+    openLocationID: '',
+    mapCenter: { lat: 56.946285, lng: 24.105078 },
+    mapZoom: 14
+
 
   }
 
@@ -27,7 +33,7 @@ class App extends Component {
         lng: place.location.lng,
       }
     ))).then(locations => {
-      this.setState({ showLocations: locations, locations:locations})
+      this.setState({ allLocations: locations, locations:locations})
     }).catch(err => console.log(err))
   }
 
@@ -35,7 +41,11 @@ class App extends Component {
     console.log(this.state.locations)
     const {
       locations,
-      showlocations
+      isMarkerShown,
+      isDetailsShown,
+      openLocationID,
+      mapCenter,
+      mapZoom
     } = this.state
 
     return (
@@ -47,6 +57,11 @@ class App extends Component {
           />
           <Map
             locations={locations}
+            isMarkerShown={isMarkerShown}
+            isDetailsShown={isDetailsShown}
+            openLocationID={openLocationID}
+            mapCenter={mapCenter}
+            mapZoom={mapZoom}
           />
         </div>
       </div>
