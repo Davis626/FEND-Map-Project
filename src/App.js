@@ -25,7 +25,6 @@ class App extends Component {
         name: place.name,
         lat: place.location.lat,
         lng: place.location.lng,
-        address: place.location.formattedAddress
       }
     ))).then(locations => {
       this.setState({ showLocations: locations, locations:locations})

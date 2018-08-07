@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { withGoogleMap, GoogleMap } from 'react-google-maps';
+import { compose, withProps } from "recompose"; //Using "recompose" to simplify component - described in https://tomchentw.github.io/react-google-maps/#usage--configuration
+import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow } from 'react-google-maps'; //Using "react-google-maps" components from https://tomchentw.github.io/react-google-maps/
 
 class Map extends Component {
    render() {
