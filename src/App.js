@@ -55,7 +55,7 @@ class App extends Component {
           <SearchPanel
             locations={locations}
           />
-          <Map
+        <Map 
             locations={locations}
             isMarkerShown={isMarkerShown}
             isDetailsShown={isDetailsShown}
