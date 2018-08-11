@@ -68,6 +68,7 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.locations)
     return (
       <div className="App">
         <NavigationPanel/>

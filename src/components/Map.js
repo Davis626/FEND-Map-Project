@@ -19,22 +19,23 @@ const ProjectMap = compose(
     defaultZoom = {props.mapZoom}
     options = {{  mapTypeControl: false }} >
 
-  {props.isMarkerShown && props.locations.map( place => {
-    return (
-    <Marker
-      key={place.id}
-      position={{lat: place.lat, lng: place.lng}}
-      onClick={() =>  {props.clickDetails(place.id, place.lat, place.lng)}}>
-      {props.isDetailsShown && props.openLocationID === place.id &&
-      <InfoWindow className="Location-details" onCloseClick={() => props.clickDetails(place.id, place.lat, place.lng)}>
-        <div>
-          <h1>{place.name}</h1>
-          <FaTree/>
-        </div>
-      </InfoWindow>}
-    </Marker>
-  )}
-)}
+    {props.isMarkerShown && props.locations.map( place => {
+        return (
+        <Marker
+          key={place.id}
+          position={{lat: place.lat, lng: place.lng}}
+          onClick={() =>  {props.clickDetails(place.id, place.lat, place.lng)}}>
+          {props.isDetailsShown && props.openLocationID === place.id &&
+          <InfoWindow className="Location-details" onCloseClick={() => props.clickDetails(place.id, place.lat, place.lng)}>
+            <div>
+              <h1>{place.name}</h1>
+              <FaTree/>
+            </div>
+          </InfoWindow>}
+        </Marker>
+      )}
+    )}
+
 
   </GoogleMap>
 )
@@ -45,7 +46,7 @@ export default class Map extends Component {
    return(
       <div>
         <ProjectMap
-          locations={this.props.location}
+          locations={this.props.locations}
           clickDetails={this.props.clickDetails}
           isDetailsShown={this.props.isDetailsShown}
           isMarkerShown={this.props.isMarkerShown}
