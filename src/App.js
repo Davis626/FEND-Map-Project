@@ -7,11 +7,10 @@ import Map from './components/Map.js'
 class App extends Component {
   state = {
     locations: [],
-    allLocations: [],
     isMarkerShown: true,
     isDetailsShown: false,
     openLocationID: '',
-    mapCenter: { lat: 56.946285, lng: 24.105078 },
+    mapCenter: { lat: 56.9514, lng: 24.1111 },
     mapZoom: 14
 
 
@@ -33,35 +32,58 @@ class App extends Component {
         lng: place.location.lng,
       }
     ))).then(locations => {
-      this.setState({ allLocations: locations, locations:locations})
+      this.setState({ locations:locations })
     }).catch(err => console.log(err))
   }
 
-  render() {
-    console.log(this.state.locations)
-    const {
-      locations,
-      isMarkerShown,
-      isDetailsShown,
-      openLocationID,
-      mapCenter,
-      mapZoom
-    } = this.state
+  // Show and hide location details (info window); change center of map
+  clickDetails = (openLocationID, lat , lng) => {
+    if (!this.state.isDetailsShown && this.state.openLocationID === ""){
+      this.setState ({
+        openLocationID: openLocationID,
+        isDetailsShown: true,
+        mapCenter: {lat, lng}
+      })
+    } else if (this.state.isDetailsShown && this.state.openLocationID !== openLocationID){
+      this.setState ({
+        openLocationID: openLocationID,
+        mapCenter: {lat, lng}
+      })
+    } else {
+      this.setState ({
+        openLocationID: "",
+        isDetailsShown: false,
+        mapCenter: {lat: 56.9514, lng: 24.1111}
+      })
+    }
+  }
 
+  // Hide open details if clicking somewhere else in the map
+  clickMap = () => {
+    this.setState ({
+      openLocationID: "",
+      isDetailsShown: false
+    })
+  }
+
+
+  render() {
     return (
       <div className="App">
         <NavigationPanel/>
         <div className="Map-container">
           <SearchPanel
-            locations={locations}
+            locations={this.state.locations}
           />
         <Map
-            locations={locations}
-            isMarkerShown={isMarkerShown}
-            isDetailsShown={isDetailsShown}
-            openLocationID={openLocationID}
-            mapCenter={mapCenter}
-            mapZoom={mapZoom}
+            locations={this.state.locations}
+            isMarkerShown={this.state.isMarkerShown}
+            isDetailsShown={this.state.isDetailsShown}
+            openLocationID={this.state.openLocationID}
+            mapCenter={this.state.mapCenter}
+            mapZoom={this.state.mapZoom}
+            clickDetails={this.clickDetails}
+            clickMap={this.clickMap}
           />
         </div>
       </div>

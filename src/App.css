@@ -46,6 +46,7 @@
 .Search-panel {
   display: flex;
   flex-direction: column;
+  padding-top: 40%;
   width: 320px;
 }
 
