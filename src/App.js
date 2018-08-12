@@ -62,19 +62,20 @@ class App extends Component {
   clickMap = () => {
     this.setState ({
       openLocationID: "",
-      isDetailsShown: false
+      isDetailsShown: false,
     })
   }
 
 
   render() {
-    console.log(this.state.locations)
+    console.log(this.state.mapCenter)
     return (
       <div className="App">
         <NavigationPanel/>
         <div className="Map-container">
           <SearchPanel
             locations={this.state.locations}
+            clickDetails={this.clickDetails}
           />
         <Map
             locations={this.state.locations}
