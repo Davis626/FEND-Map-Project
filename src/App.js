@@ -11,6 +11,7 @@ class App extends Component {
     searchLocations: [],
     isMarkerShown: true,
     isDetailsShown: false,
+    visibility: 'hidden',
     openLocationID: '',
     query: '',
 
@@ -76,6 +77,15 @@ class App extends Component {
     })
   }
 
+  // Toggle visibility of search panel
+  toggleSearchPanel = () => {
+    if (this.state.visibility === "hidden"){
+    this.setState ({ visibility: "visible" })
+    } else {
+    this.setState ({ visibility: "hidden"})
+    }
+  }
+
   // Function for handling search
   handleSearch = query => {
     this.setState ({ query });
@@ -89,16 +99,19 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.query)
+    console.log(this.state.visibility)
     return (
       <div className="App">
-        <NavigationPanel/>
+          <NavigationPanel
+            toggleSearchPanel={this.toggleSearchPanel}
+            />
         <div className="Map-container">
           <SearchPanel
             locations={this.state.locations}
             query={this.state.query}
             clickDetails={this.clickDetails}
             handleSearch={this.handleSearch}
+            visibility={this.state.visibility}
           />
         <Map
             locations={this.state.locations}
