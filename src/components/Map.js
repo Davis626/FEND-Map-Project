@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow } from 'react-google-maps'; //Using "react-google-maps" components from https://tomchentw.github.io/react-google-maps/
-import { compose, withProps } from 'recompose' //Using "recompose" to simplify component - described in https://tomchentw.github.io/react-google-maps/#usage--configuration
-import { FaTree } from "react-icons/fa"; //Using "react icons" from https://react-icons.netlify.com/#/
+import { compose, withProps } from 'recompose'; //Using "recompose" to simplify component - described in https://tomchentw.github.io/react-google-maps/#usage--configuration
+import LocationDetails from './LocationDetails.js';
 
 const ProjectMap = compose(
   withProps({
@@ -34,10 +34,7 @@ const ProjectMap = compose(
             key={place.id}
             onCloseClick={() => props.clickDetails(place.id, place.lat, place.lng)}
             >
-            <div>
-              <h4>{place.name}</h4>
-              <FaTree/>
-            </div>
+            <LocationDetails place={place} />
           </InfoWindow>}
         </Marker>
       )}

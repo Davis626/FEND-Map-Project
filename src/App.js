@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
-import NavigationPanel from './components/NavigationPanel.js'
-import SearchPanel from './components/SearchPanel.js'
-import Map from './components/Map.js'
-import escapeRegExp from 'escape-string-regexp'
+import NavigationPanel from './components/NavigationPanel.js';
+import SearchPanel from './components/SearchPanel.js';
+import Map from './components/Map.js';
+import escapeRegExp from 'escape-string-regexp';
 
 class App extends Component {
   state = {
@@ -34,6 +34,7 @@ class App extends Component {
         name: place.name,
         lat: place.location.lat,
         lng: place.location.lng,
+        address: place.location.formattedAddress,
       }
     ))).then(locations => {
       this.setState({
@@ -99,7 +100,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.visibility)
     return (
       <div className="App">
           <NavigationPanel
