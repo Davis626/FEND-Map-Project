@@ -3,17 +3,20 @@ import './App.css';
 import NavigationPanel from './components/NavigationPanel.js'
 import SearchPanel from './components/SearchPanel.js'
 import Map from './components/Map.js'
+import escapeRegExp from 'escape-string-regexp'
 
 class App extends Component {
   state = {
     locations: [],
+    searchLocations: [],
     isMarkerShown: true,
     isDetailsShown: false,
     openLocationID: '',
+    query: '',
+
+    // Default map settings
     mapCenter: { lat: 56.9514, lng: 24.1111 },
     mapZoom: 14
-
-
   }
 
   componentDidMount() {
@@ -32,23 +35,29 @@ class App extends Component {
         lng: place.location.lng,
       }
     ))).then(locations => {
-      this.setState({ locations:locations })
+      this.setState({
+        locations:locations,
+        searchLocations:locations
+      })
     }).catch(err => console.log(err))
   }
 
-  // Show and hide location details (info window); change center of map
+  // Show and hide location details (info window) & change center of map
   clickDetails = (openLocationID, lat , lng) => {
+    // If no info window is open, open new info window & change center of map
     if (!this.state.isDetailsShown && this.state.openLocationID === ""){
       this.setState ({
         openLocationID: openLocationID,
         isDetailsShown: true,
         mapCenter: {lat, lng}
       })
+    // If another info window is already open, switch to current info window & change center of map
     } else if (this.state.isDetailsShown && this.state.openLocationID !== openLocationID){
       this.setState ({
         openLocationID: openLocationID,
         mapCenter: {lat, lng}
       })
+    // Otherwise close info window & return to default map center
     } else {
       this.setState ({
         openLocationID: "",
@@ -58,24 +67,38 @@ class App extends Component {
     }
   }
 
-  // Hide open details if clicking somewhere else in the map
+  // Hide open details if clicking somewhere else in the map & return to default map center
   clickMap = () => {
     this.setState ({
       openLocationID: "",
       isDetailsShown: false,
+      mapCenter: {lat: 56.9514, lng: 24.1111}
     })
+  }
+
+  // Function for handling search
+  handleSearch = query => {
+    this.setState ({ query });
+    if (query) {
+      const match = new RegExp(escapeRegExp(query), 'i')
+      this.setState({ locations: this.state.searchLocations.filter(place => match.test(place.name)) })
+    } else {
+      this.setState({ locations: this.state.searchLocations })
+    }
   }
 
 
   render() {
-    console.log(this.state.mapCenter)
+    console.log(this.state.query)
     return (
       <div className="App">
         <NavigationPanel/>
         <div className="Map-container">
           <SearchPanel
             locations={this.state.locations}
+            query={this.state.query}
             clickDetails={this.clickDetails}
+            handleSearch={this.handleSearch}
           />
         <Map
             locations={this.state.locations}

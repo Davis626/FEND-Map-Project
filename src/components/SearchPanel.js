@@ -5,7 +5,12 @@ export default class SearchPanel extends Component {
     return (
       <div className="Search-panel">
         <div className="Search-input">
-          <input/>
+          <input
+            type="text"
+            placeholder="Search park"
+            value={this.props.query}
+            onChange={ (event) => { this.props.handleSearch(event.target.value)} }
+            />
         </div>
         <div className="Search-results">
           {this.props.locations.map( place => {
