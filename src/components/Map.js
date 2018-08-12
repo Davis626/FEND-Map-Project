@@ -17,7 +17,8 @@ const ProjectMap = compose(
     onClick={props.clickMap}
     center = {props.mapCenter}
     zoom = {props.mapZoom}
-    options = {{  mapTypeControl: false }} >
+    options = {{  mapTypeControl: false }}
+    >
 
     {props.isMarkerShown && props.locations.map( place => {
         return (
@@ -25,11 +26,16 @@ const ProjectMap = compose(
           animation={props.isDetailsShown && props.openLocationID === place.id ? 1 : -1}
           key={place.id}
           position={{lat: place.lat, lng: place.lng}}
-          onClick={() =>  {props.clickDetails(place.id, place.lat, place.lng)}}>
+          onClick={() =>  {props.clickDetails(place.id, place.lat, place.lng)}}
+          >
           {props.isDetailsShown && props.openLocationID === place.id &&
-          <InfoWindow className="Location-details" onCloseClick={() => props.clickDetails(place.id, place.lat, place.lng)}>
+          <InfoWindow
+            className="Location-details"
+            key={place.id}
+            onCloseClick={() => props.clickDetails(place.id, place.lat, place.lng)}
+            >
             <div>
-              <h1>{place.name}</h1>
+              <h4>{place.name}</h4>
               <FaTree/>
             </div>
           </InfoWindow>}

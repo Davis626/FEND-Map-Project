@@ -4,8 +4,9 @@ export default class SearchPanel extends Component {
   render() {
     return (
       <div className="Search-panel" style={{visibility: this.props.visibility}}>
-        <div className="Search-input">
+        <div >
           <input
+            className="Search-input"
             type="text"
             placeholder="Search park"
             value={this.props.query}
@@ -16,7 +17,7 @@ export default class SearchPanel extends Component {
           {this.props.locations.map( place => {
             return (
               <ol key={place.id}>
-                <button
+                <button className="Search-button"
                   key={place.id}
                   onClick={() =>  {this.props.clickDetails(place.id, place.lat, place.lng)}}
                   >
