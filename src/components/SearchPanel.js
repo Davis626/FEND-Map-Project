@@ -8,7 +8,7 @@ export default class SearchPanel extends Component {
           <input
             className="Search-input"
             type="text"
-            placeholder="Search park"
+            placeholder="  Search park..."
             value={this.props.query}
             onChange={ (event) => { this.props.handleSearch(event.target.value)} }
             />
@@ -16,7 +16,10 @@ export default class SearchPanel extends Component {
         <div className="Search-results">
           {this.props.locations.map( place => {
             return (
-              <ol key={place.id}>
+              <ol
+                className="Search-list"
+                key={place.id}
+                >
                 <button className="Search-button"
                   key={place.id}
                   onClick={() =>  {this.props.clickDetails(place.id, place.lat, place.lng)}}

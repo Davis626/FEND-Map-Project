@@ -16,7 +16,7 @@ class App extends Component {
     query: '',
 
     // Default map settings
-    mapCenter: { lat: 56.9514, lng: 24.1111 },
+    mapCenter: { lat: 56.9475, lng: 24.1093 },
     mapZoom: 14
   }
 
@@ -64,7 +64,7 @@ class App extends Component {
       this.setState ({
         openLocationID: "",
         isDetailsShown: false,
-        mapCenter: {lat: 56.9514, lng: 24.1111}
+        mapCenter: {lat: 56.9475, lng: 24.1093}
       })
     }
   }
@@ -74,7 +74,7 @@ class App extends Component {
     this.setState ({
       openLocationID: "",
       isDetailsShown: false,
-      mapCenter: {lat: 56.9514, lng: 24.1111}
+      mapCenter: {lat: 56.9475, lng: 24.1093}
     })
   }
 
@@ -104,6 +104,7 @@ class App extends Component {
       <div className="App">
           <NavigationPanel
             toggleSearchPanel={this.toggleSearchPanel}
+            isPanelVisible={this.state.isPanelVisible}
             />
           <SearchPanel
             locations={this.state.locations}

@@ -18,7 +18,7 @@ export default class LocationDetails extends Component {
     .then(data => {
         prefix = data.response.photos.items[0].prefix;
         suffix = data.response.photos.items[0].suffix;
-        url = `${prefix}200x200${suffix}`;
+        url = `${prefix}160x160${suffix}`;
         this.setState({imageUrl: url,});
       })
     .catch(err => console.log(err))
