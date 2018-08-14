@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class SearchPanel extends Component {
   render() {
     return (
-      <div className="Search-panel" style={{visibility: this.props.visibility}}>
+      <div className={this.props.isPanelVisible ? 'Search-panel visible' : 'Search-panel'}>
         <div >
           <input
             className="Search-input"

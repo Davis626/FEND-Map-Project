@@ -48,7 +48,7 @@ export default class Map extends Component {
 
   render() {
    return(
-      <div>
+      <div className={this.props.isPanelVisible ? 'Map-container searchpanel' : 'Map-container'}>
         <ProjectMap
           locations={this.props.locations}
           clickDetails={this.props.clickDetails}

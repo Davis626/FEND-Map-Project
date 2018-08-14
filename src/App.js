@@ -11,7 +11,7 @@ class App extends Component {
     searchLocations: [],
     isMarkerShown: true,
     isDetailsShown: false,
-    visibility: 'hidden',
+    isPanelVisible: false,
     openLocationID: '',
     query: '',
 
@@ -80,10 +80,10 @@ class App extends Component {
 
   // Toggle visibility of search panel
   toggleSearchPanel = () => {
-    if (this.state.visibility === "hidden"){
-    this.setState ({ visibility: "visible" })
+    if (!this.state.isPanelVisible){
+    this.setState ({ isPanelVisible: true })
     } else {
-    this.setState ({ visibility: "hidden"})
+    this.setState ({ isPanelVisible: false })
     }
   }
 
@@ -105,15 +105,14 @@ class App extends Component {
           <NavigationPanel
             toggleSearchPanel={this.toggleSearchPanel}
             />
-        <div className="Map-container">
           <SearchPanel
             locations={this.state.locations}
             query={this.state.query}
             clickDetails={this.clickDetails}
             handleSearch={this.handleSearch}
-            visibility={this.state.visibility}
+            isPanelVisible={this.state.isPanelVisible}
           />
-        <Map
+          <Map
             locations={this.state.locations}
             isMarkerShown={this.state.isMarkerShown}
             isDetailsShown={this.state.isDetailsShown}
@@ -122,8 +121,8 @@ class App extends Component {
             mapZoom={this.state.mapZoom}
             clickDetails={this.clickDetails}
             clickMap={this.clickMap}
+            isPanelVisible={this.state.isPanelVisible}
           />
-        </div>
       </div>
     );
   }
