@@ -18,14 +18,12 @@ export default class SearchPanel extends Component {
             onChange={ (event) => { this.props.handleSearch(event.target.value)} }
             />
         </div>
-        <div className="Search-results">
+        <div
+          className="Search-results"
+          aria-label="List of locations"
+          >
           {this.props.locations.map( place => {
             return (
-              <ol
-                aria-label="List of locations"
-                className="Search-list"
-                key={place.id}
-                >
                 <button
                   tabIndex={this.props.isPanelVisible ? "0" : "-1"}
                   className="Search-button"
@@ -34,7 +32,6 @@ export default class SearchPanel extends Component {
                   >
                   {place.name}
                 </button>
-              </ol>
             )
           }
           )}

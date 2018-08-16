@@ -8,7 +8,6 @@ export default class NavigationPanel extends Component {
         <button
           className={this.props.isPanelVisible ? "Nav-button searchpanel" : "Nav-button"}
           aria-label={this.props.isPanelVisible ? "Close search panel" : "Open search panel"}
-          aside role="Navigation"
           >
           <i className="fa fa-bars fa-4x" onClick={this.props.toggleSearchPanel}/>
         </button>
