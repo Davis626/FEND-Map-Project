@@ -48,7 +48,10 @@ export default class Map extends Component {
 
   render() {
    return(
-      <div className={this.props.isPanelVisible ? 'Map-container searchpanel' : 'Map-container'}>
+      <div
+        className={this.props.isPanelVisible ? 'Map-container searchpanel' : 'Map-container'}
+        aria-label="Map of Riga" role="application"
+        >
         <ProjectMap
           locations={this.props.locations}
           clickDetails={this.props.clickDetails}
