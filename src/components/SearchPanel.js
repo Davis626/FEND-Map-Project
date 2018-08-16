@@ -4,6 +4,7 @@ export default class SearchPanel extends Component {
   render() {
     return (
       <div
+        {/*Clicking on the hamburger icon changes css class*/}
         className={this.props.isPanelVisible ? 'Search-panel visible' : 'Search-panel'}
         aria-label="Search panel"
         >
@@ -15,6 +16,7 @@ export default class SearchPanel extends Component {
             type="text"
             placeholder="  Search park..."
             value={this.props.query}
+            {/*handleSearch function filters markers depending from the search input text*/}
             onChange={ (event) => { this.props.handleSearch(event.target.value)} }
             />
         </div>
@@ -25,6 +27,7 @@ export default class SearchPanel extends Component {
           {this.props.locations.map( place => {
             return (
                 <button
+                  {/*Clicking on the hamburger icon changes tabIndex*/}
                   tabIndex={this.props.isPanelVisible ? "0" : "-1"}
                   className="Search-button"
                   key={place.id}
