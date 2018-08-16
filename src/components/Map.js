@@ -1,9 +1,33 @@
 import React, { Component } from 'react';
 import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow } from 'react-google-maps'; //Using "react-google-maps" components from https://tomchentw.github.io/react-google-maps/
-import { compose, withProps } from 'recompose'; //Using "recompose" to simplify component - described in https://tomchentw.github.io/react-google-maps/#usage--configuration
+import { compose, withProps, lifecycle, withStateHandlers } from 'recompose'; //Using "recompose" to simplify component - described in https://tomchentw.github.io/react-google-maps/#usage--configuration
 import LocationDetails from './LocationDetails.js';
 
 const ProjectMap = compose(
+  // Handle errors - display alert message & console log error message
+
+  // Getting error message (Error Boundaries) - https://reactjs.org/docs/error-boundaries.html
+  // Listening for authentication errors - https://developers.google.com/maps/documentation/javascript/events
+  withStateHandlers(
+    () => ({ error: null }),
+  ),
+  lifecycle({
+    componentDidMount() {
+      window.gm_authFailure = () => {
+        alert("Sorry. An error has occured while loading data from google maps API. Check the console for more info.");
+      };
+    },
+    componentDidCatch(error) {
+      this.setState({ error: error });
+      console.log(error);
+    }
+  }),
+
+  // Creating map with "react-google-maps" components - https://tomchentw.github.io/react-google-maps/#usage--configuration
+
+  // Getting correct state from parent App.js component
+  // Marker component from "react-google-maps" - https://tomchentw.github.io/react-google-maps/#marker
+  // InfoWindow component from "react-google-maps" - https://tomchentw.github.io/react-google-maps/#infowindow
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCdigiQdWVM8WPznyVBAmGuvAFOr7TBjMc&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{height: '100%'}}/>,
