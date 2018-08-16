@@ -27,7 +27,15 @@ class App extends Component {
   // Creating locations array by fetching data from foursquare API
   getLocations = () => {
     fetch('https://api.foursquare.com/v2/venues/search?ll=56.946285,24.105078&intent=browse&radius=2000&categoryId=4bf58dd8d48988d163941735&limit=15&client_id=DNN2KCYLYXI3WC1AOCN2SH5RY2ALMLHO5LNLFEUASSYQWO0F&client_secret=3WGFL1JW4OABW3403BED4ZPYWJM1LDYRL4PAERKADSRLR2FP&v=20180805')
-    .then( response => response.json())
+    .then( response => {
+      // Display alert message if there is a problem with fetching data
+      if (!response.ok) {
+        alert("Sorry. An error has occured while loading data from foursquare API. Check the console for more info.")
+      }
+      // If there is no problem, return json response
+      return response.json();
+    })
+    // Using map - get the id, name, lat, lng and address values for each location from the json response
     .then (data => data.response.venues.map(place => (
       {
         id: place.id,
@@ -37,6 +45,7 @@ class App extends Component {
         address: place.location.formattedAddress,
       }
     ))).then(locations => {
+      // Store the information for each location & set state for locations and searchLocations arrays
       this.setState({
         locations:locations,
         searchLocations:locations
