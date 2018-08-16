@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 
+// Component contains the details of a location, including - location name, photo, address and reference for usinf Foursquare API
+
 export default class LocationDetails extends Component {
   state = {
     imageUrl: []
@@ -39,6 +41,9 @@ export default class LocationDetails extends Component {
         <img src={this.state.imageUrl} alt={this.props.place.name} />
         <p className="Details-footer">
           {this.props.place.address}
+        </p>
+        <p className="Details-reference">
+          Location data using Foursquare API
         </p>
       </div>
     );

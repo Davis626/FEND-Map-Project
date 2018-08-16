@@ -3,6 +3,8 @@ import { withGoogleMap, GoogleMap, withScriptjs, Marker, InfoWindow } from 'reac
 import { compose, withProps, lifecycle, withStateHandlers } from 'recompose'; //Using "recompose" to simplify component - described in https://tomchentw.github.io/react-google-maps/#usage--configuration
 import LocationDetails from './LocationDetails.js';
 
+// Component contains the map, markers and infowindow
+
 const ProjectMap = compose(
   // Handle errors - display alert message & console log error message
 
