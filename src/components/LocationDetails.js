@@ -39,9 +39,8 @@ export default class LocationDetails extends Component {
       <div className="Details-info">
         <h3>{this.props.place.name}</h3>
         <img src={this.state.imageUrl} alt={this.props.place.name} />
-        <p className="Details-footer">
-          {this.props.place.address}
-        </p>
+        <p>Address:</p>
+        <p>{this.props.place.address}</p>
       </div>
     );
   }
