@@ -1,6 +1,6 @@
 # Neighborhood Map Project
 
-(Place for project screenshot)
+<img src="/app.jpg" alt="Project Screenshot">
 
 ## Table of Contents
 * [Project Overview](#project-overview)
