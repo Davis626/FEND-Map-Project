@@ -16,6 +16,14 @@ Neighborhood map - final project of the Udacity Front-End Web Developer Nanodegr
 
 Project made with React and bootstraped from [`create-react-app`](https://github.com/facebook/create-react-app).
 
+This project combines information from the whole Udacity Nanodegree course, such as:
+
+* Responsive interface design
+* Asynchronous Data Usage
+* Accessibility
+* Offline Use
+* Building applications using React
+
 ## React Components Structure
 ```
 <App />
@@ -27,16 +35,24 @@ Project made with React and bootstraped from [`create-react-app`](https://github
   <Map />
     <LocationDetails />
 
+  <Footer />
+
 ```
 
-## Dependencies
+## Dependencies & used APIs
 
 * React google maps - [`react-google-maps`](https://tomchentw.github.io/react-google-maps/)
+* Recompose - [`recompose`](https://github.com/acdlite/recompose)
+* Escape RegExp - [`escape-string-regexp`](https://www.npmjs.com/package/escape-string-regexp)
+* Fetched location data and images with [`Foursquare API`](https://developer.foursquare.com/)
+* Created map with [`Google maps API`](https://developers.google.com/maps/documentation/javascript/tutorial)
 
 ## Instructions
 
+
 * download or clone the repository
 * `cd` into the project folder
+* if you don't have npm installed, navigate to: https://www.npmjs.com/get-npm
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 * with your server running, visit the site in browser: `http://localhost:3000`
@@ -44,13 +60,8 @@ Project made with React and bootstraped from [`create-react-app`](https://github
 ## About the project
 
 Riga is the capital city of Latvia and also my hometown, so for this project I decided to display popular parks near the city center.
-This project combines information from the whole Udacity Nanodegree course, such as:
 
-* Responsive interface design
-* Asynchronous Data Usage
-* Accessibility
-* Offline Use
-* Building applications using React
+Maps diplays 15 markers, representing 15 park locations fetched from Foursquare API. There is also a search panel with all these locations listed. Activate the search panel by pressing the hamburger icon. Search panel has a text input field, that filters both the list and the map markers displayed. Clicking on a marker or a location on the list pops up an info window with details about the selected location including location name, address and image.
 
 ## Credits
 
