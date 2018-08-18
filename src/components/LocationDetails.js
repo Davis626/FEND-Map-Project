@@ -42,9 +42,6 @@ export default class LocationDetails extends Component {
         <p className="Details-footer">
           {this.props.place.address}
         </p>
-        <p className="Details-reference">
-          Location data using Foursquare API
-        </p>
       </div>
     );
   }

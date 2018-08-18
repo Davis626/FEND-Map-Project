@@ -49,7 +49,7 @@
 
 .Map-container {
   width: 100vw;
-  height: 100vh;
+  height: 95vh;
 }
 .Map-container.searchpanel {
   width: calc(100vw - 360px);
@@ -65,7 +65,7 @@
 .Search-panel {
   padding-top: 85px;
   width: 360px;
-  height: 100vh;
+  height: 95vh;
   position: fixed;
   top: 0;
   left: -360px;
@@ -113,6 +113,35 @@
 
 .Search-input:hover {
   background: #bdf3ab;
+}
+
+/* Styles for Footer component */
+
+.Footer {
+  position: fixed;
+  z-index: 2;
+  height: 5vh;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: #252831;
+  color: white;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 5vh;
+}
+
+.Footer h4 {
+  margin: auto 0em auto 0;
+  padding: 0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+
+.Footer a {
+    color: #bdf3ab;
 }
 
 /* Responsive design*/

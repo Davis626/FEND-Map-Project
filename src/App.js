@@ -3,6 +3,7 @@ import './App.css';
 import NavigationPanel from './components/NavigationPanel.js';
 import SearchPanel from './components/SearchPanel.js';
 import Map from './components/Map.js';
+import Footer from './components/Footer.js';
 import escapeRegExp from 'escape-string-regexp';
 
 class App extends Component {
@@ -133,6 +134,7 @@ class App extends Component {
             clickMap={this.clickMap}
             isPanelVisible={this.state.isPanelVisible}
           />
+          <Footer/>
       </div>
     );
   }
