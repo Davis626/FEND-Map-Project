@@ -50,6 +50,7 @@ Project made with React and bootstraped from [`create-react-app`](https://github
 
 ## Instructions
 
+You can run a **[live demo]()** deployed with `gh-pages` or follow the steps below:
 
 * download or clone the repository
 * `cd` into the project folder
